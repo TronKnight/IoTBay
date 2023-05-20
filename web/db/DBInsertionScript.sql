@@ -20,3 +20,16 @@ INSERT INTO IOTBAY.UserLogs VALUES
 (1, 'Registered', '2023-05-14 10:45:00'),
 (2, 'Logged Out', '2023-05-14 11:45:00'),
 (3, 'Logged In', '2023-05-14 12:45:00');
+
+INSERT INTO IOTBAY.PRODUCTS (PRODUCTID, PRODUCTNAME, PRODUCTSERIALNUMBER, PRODUCTCATEGORY, PRODUCTIMGURL, PRODUCTQUANTITY, PRODUCTBRAND, PRODUCTPRICE) 
+VALUES 
+(1, 'Arduino Nana RX-33 ', 1, 'Connector', 'ArduinoNana33.jpg', 1, 'Blobx', 32.34),
+(2, 'Asus RTA-X53U ', 2, 'Networking', 'AsusRTAX53U.jpg', 3, 'Asus', 45.56),
+(3, 'Mini Travel Router A234 ', 3, 'Networking', 'MiniTravelRouter.jpg', 4, 'Geoma', 75.0),
+(4, 'Smart VPN Router X6 ', 4, 'Networking', 'SmartVPNRouter.jpg', 1, 'Techna', 80.99),
+(5, 'Development Board Boards Home Smart Devices ', 5, 'Display', 'DevelopmentBoardBoardsHomeSmartDevices.jpg', 5, 'ESCP32', 33.5),
+(6, 'In-Hand Networks IR302 ', 6, 'Networking', 'InHandNetworksIR302.jpg', 1, 'In-Hand', 45.77),
+(7, 'Switch Bot Hub Portable X2 ', 7, 'Connector', 'SwitchBotHub.jpg', 3, 'Thunderstrike', 34.66),
+(8, 'WifI Range Extender Vesma22 ', 8, 'Extender', 'WifiRangeExtender.jpg', 1, 'Vesma', 55.45),
+(9, 'Waterproof USB Connector ', 9, 'Connector', 'WaterproofUSBConnector.jpg', 3, 'Underwater', 67.88),
+(10, 'Trend Micro Home Netword Security ', 10, 'Display', 'TrendMicroHomeNetwordSecurity.jpg', 2, 'Homemaking', 45.23);
