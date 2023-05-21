@@ -88,7 +88,31 @@ ResultSet resultSet = null;
                         }
                     %>
             </table>        
-            
+         <div class="product-grid">
+                <% if (products != null) {
+                    for (Product product : products) { %>
+                        <div class="product-item">
+                            <div class="product-card">
+                                <div class="product-image">
+                                    <img  src="IoT products/<%= product.getProductImageURL() %>" alt="Photo of <%= product.getProductName() %>">                   
+                                </div>    
+                                <div class="product-details" >    
+                                    <h5 class="product-name"><%= product.getProductName() %></h5>
+                                    <p class="product-id">Product ID: <%= product.getProductID() %></p>
+                                    <p class="product-price">Price: <%= priceFormat.format(product.getProductPrice()) %></p>
+                                    <% if (product.getProductQuantity() > 0) { %>
+                                        <p class="product-quantity">Quantity: <%= product.getProductQuantity() %></p>
+                                    <% } else { %>
+                                        <p class="product-quantity.out-of-stock">Quantity: Out of Stock</p>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } else { %>
+                    <p>No products found.</p> <%-- Display a message when products list is empty --%>
+                <% } %>
+            </div> 
         </div>
     </div>
 </body>
