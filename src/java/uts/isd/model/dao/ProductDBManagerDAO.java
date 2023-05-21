@@ -21,7 +21,7 @@ public class ProductDBManagerDAO {
     }
     
     public Product findProduct(int id) throws SQLException {
-        String query = "SELECT * FROM IOTBAY.PRODUCT WHERE PRODUCTID= " + id;
+        String query = "SELECT * FROM IOTBAY.PRODUCTS WHERE PRODUCTID= " + id;
         ResultSet rs = st.executeQuery(query);
        
         while(rs.next()) {
@@ -35,7 +35,7 @@ public class ProductDBManagerDAO {
             String brand = rs.getString("PRODUCTBRAND");
             String image = rs.getString("PRODUCTIMAGEURL");
             
-            Product product = new Product(productID, serialNum, name, category, brand, price, quantity, image, supplierID);
+            Product product = new Product(productID, serialNum, name, category, brand, price, quantity, image);
             return product;
         }
         return null;
@@ -45,7 +45,7 @@ public class ProductDBManagerDAO {
     // Create - add a new product
     public void addProduct(int productID, int serialNum, int quantity, int supplierID, float price, String name, String category, String brand, String image ) throws SQLException{
         String query = 
-                "INSERT INTO IOTBAY.PRODUCT(PRODUCTID, PRODUCTSERIALNUM, PRODUCTQUANTITY, SUPPLIERID, PRODUCTPRICE, PRODUCTNAME, PRODUCTCATEGORY, PRODUCTBRAND, PRODUCTIMAGEURL) " +
+                "INSERT INTO IOTBAY.PRODUCTS(PRODUCTID, PRODUCTSERIALNUM, PRODUCTQUANTITY, SUPPLIERID, PRODUCTPRICE, PRODUCTNAME, PRODUCTCATEGORY, PRODUCTBRAND, PRODUCTIMAGEURL) " +
                 "VALUES('" + productID + "', " + serialNum + ", '" + quantity + "', '" + supplierID + "', " + price + ", " + name + ", " + category + ", " + brand + ", " + image + ")";
         st.execute(query);
     }
@@ -58,7 +58,7 @@ public class ProductDBManagerDAO {
      * @throws SQLException
      */
     public ArrayList<Product> listAllProducts() throws SQLException {
-        String query = "SELECT * FROM IOTBAY.PRODUCT ORDER BY PRODUCTID";
+        String query = "SELECT * FROM IOTBAY.PRODUCTS ORDER BY PRODUCTID";
         ResultSet rs = st.executeQuery(query);
         ArrayList<Product> list = new ArrayList<>();
         
@@ -73,14 +73,14 @@ public class ProductDBManagerDAO {
             String brand = rs.getString("PRODUCTBRAND");
             String image = rs.getString("PRODUCTIMAGEURL");
             
-            list.add(new Product(productID, serialNum, name, category, brand, price, quantity, image, supplierID));
+            list.add(new Product(productID, serialNum, name, category, brand, price, quantity, image));
         }
         return list;
     }
     
     // Read - Search & List Product by NAME
     public ArrayList<Product> searchProductsbyName(String search) throws SQLException {
-        String query = "SELECT * FROM IOTBAY.PRODUCT WHERE PRODUCTNAME LIKE " + "%" + search + "%";
+        String query = "SELECT * FROM IOTBAY.PRODUCTS WHERE PRODUCTNAME LIKE " + "%" + search + "%";
         ResultSet rs = st.executeQuery(query);
         ArrayList<Product> list = new ArrayList<>();
         
@@ -95,14 +95,14 @@ public class ProductDBManagerDAO {
             String brand = rs.getString("PRODUCTBRAND");
             String image = rs.getString("PRODUCTIMAGEURL");
             
-            list.add(new Product(productID, serialNum, name, category, brand, price, quantity, image, supplierID));
+            list.add(new Product(productID, serialNum, name, category, brand, price, quantity, image));
         }
         return list;
     }
         
     // Read - Search & List Product by Category
     public ArrayList<Product> searchProductsbyType(String search) throws SQLException {
-        String query = "SELECT * FROM IOTBAY.PRODUCT WHERE PRODUCTCATEGORY LIKE " + "%" + search + "%";
+        String query = "SELECT * FROM IOTBAY.PRODUCTS WHERE PRODUCTCATEGORY LIKE " + "%" + search + "%";
         ResultSet rs = st.executeQuery(query);
         ArrayList<Product> list = new ArrayList<>();
         
@@ -117,7 +117,7 @@ public class ProductDBManagerDAO {
             String brand = rs.getString("PRODUCTBRAND");
             String image = rs.getString("PRODUCTIMAGEURL");
             
-            list.add(new Product(productID, serialNum, name, category, brand, price, quantity, image, supplierID));
+            list.add(new Product(productID, serialNum, name, category, brand, price, quantity, image));
         }
         return list;
     }
@@ -134,7 +134,7 @@ public class ProductDBManagerDAO {
         }
          
         String query = 
-                "SELECT * FROM IOTBAY.PRODUCT " +
+                "SELECT * FROM IOTBAY.PRODUCTS " +
                 "WHERE LOWER(PRODUCTNAME) LIKE " + "'%" + searchName + "%'" +
                 "AND LOWER(PRODUCTCATEGORY) LIKE " + "'%" + searchcategory + "%'";
         ResultSet rs = st.executeQuery(query);
@@ -151,7 +151,7 @@ public class ProductDBManagerDAO {
             String brand = rs.getString("PRODUCTBRAND");
             String image = rs.getString("PRODUCTIMAGEURL");
             
-            list.add(new Product(productID, serialNum, name, category, brand, price, quantity, image, supplierID));
+            list.add(new Product(productID, serialNum, name, category, brand, price, quantity, image));
         }
         return list;
     }
@@ -159,7 +159,7 @@ public class ProductDBManagerDAO {
     // Update - Update a single product
     public void updateProduct(int productID, int serialNum, String name, String category, String brand, float price, int quantity, String image, int supplierID) throws SQLException {
         String query = 
-                "UPDATE IOTBAY.PRODUCT SET" +
+                "UPDATE IOTBAY.PRODUCTSs SET" +
                 " PRODUCTSERIALNUM= " + serialNum + ", " +
                 " PRODUCTNAME= " + "'" + name + "'" + ", " +
                 " PRODUCTCATEGORY= " + "'" + category + "'" + ", " +
@@ -175,7 +175,9 @@ public class ProductDBManagerDAO {
     
     // Delete - Delete a single product
     public void deleteProduct(String id) throws SQLException {
-        String query = "DELETE FROM IOTBAY.PRODUCT WHERE PRODUCTID =" + id;
+        String query = "DELETE FROM IOTBAY.PRODUCTS WHERE PRODUCTID =" + id;
         st.execute(query);
+        
+        
     }
 }

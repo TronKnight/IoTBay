@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author kishi
  */
 public class Product implements Serializable{
-    private int productID, productSerialNum, productQuantity, supplierID;
+    private int productID, productSerialNum, productQuantity;
     private float productPrice;
     private String productName, productCategory, productBrand, productImageURL;
     
@@ -21,12 +21,12 @@ public class Product implements Serializable{
             String productBrand,
             float productPrice,
             int productQuantity,
-            String productImageURL,
-            int supplierID){
+            String productImageURL
+            ){
         this.productID = productID;
         this.productSerialNum = productSerialNum;
         this.productQuantity = productQuantity;
-        this.supplierID = supplierID;
+        
         this.productPrice = productPrice;
         this.productName = productName;
         this.productCategory = productCategory;
@@ -56,14 +56,6 @@ public class Product implements Serializable{
     
     public void setProductQuantity(int productQuantity) {
         this.productQuantity = productQuantity;
-    }
-    
-    public int getSupplierID() {
-        return supplierID;
-    }
-    
-    public void setSupplierID(int supplierID) {
-        this.supplierID = supplierID;
     }
     
     public float getProductPrice() {
