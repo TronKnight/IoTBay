@@ -29,7 +29,6 @@ public class RegisterServlet extends HttpServlet {
         String phoneNumber = request.getParameter("phonenum");
         String streetNumber = request.getParameter("streetnum");
         String streetName = request.getParameter("streetname");
-        String streetType = request.getParameter("streettype");
         String suburb = request.getParameter("suburb");
         String state = request.getParameter("state");
         String postcode = request.getParameter("postcode");
@@ -69,10 +68,10 @@ public class RegisterServlet extends HttpServlet {
                     request.getRequestDispatcher("userRegister.jsp").include(request, response);
                 } else {
                     // the error is in the addUser function in UserManagerDAO, it's not being inserted into the db when called
-                    manager.addUser(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country );
+                    manager.addUser(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, suburb, state, postcode, country );
                     int userID = manager.getUserID(email, password);
                     manager.addRegisterLog(userID);
-                    User user = new User(userID, firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
+                    User user = new User(userID, firstName, lastName, email, password, phoneNumber, streetNumber, streetName, suburb, state, postcode, country);
                     session.setAttribute("user", user);
                     request.getRequestDispatcher("welcome.jsp").include(request, response);
                 }

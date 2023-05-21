@@ -60,10 +60,6 @@
                                     <td> <input type="text" placeholder="Enter Street Name" name="streetname" required> </td>
                                 </tr>
                                 <tr>
-                                    <td> <label for="street-type">Street Type</label> </td>
-                                    <td> <input type="text" placeholder="Enter Street Type" name="streettype" required> </td>
-                                </tr>
-                                <tr>
                                     <td> <label for="suburb">Suburb</label> </td>
                                     <td> <input type="text" placeholder="Enter Suburb" name="suburb" required> </td>
                                 </tr>

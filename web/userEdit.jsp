@@ -25,8 +25,8 @@
             String postcodeErr = (String) session.getAttribute("postcodeErr");
         %>
         <h1 class='title'>IoT Bay Store</h1>            
-        <div class="registerpagecontainer">
-            <form action="EditDetailsServlet" method="POST">             
+        <div style="display: flex">
+            <form action="EditDetailsServlet" method="POST" style="margin-left: 300px">             
                 <div class='register-container'>
                     <div>
                          <h1><strong> Edit Details </strong></h1>
@@ -60,10 +60,6 @@
                                     <td> <input type="text" placeholder="Enter Street Name" name="streetname" required> </td>
                                 </tr>
                                 <tr>
-                                    <td> <label for="street-type">Street Type</label> </td>
-                                    <td> <input type="text" placeholder="Enter Street Type" name="streettype" required> </td>
-                                </tr>
-                                <tr>
                                     <td> <label for="suburb">Suburb</label> </td>
                                     <td> <input type="text" placeholder="Enter Suburb" name="suburb" required> </td>
                                 </tr>
@@ -93,6 +89,35 @@
                     </div>
                     <div>
                         <button type="submit">Create Account</button>
+                    </div>
+                    <div style="margin-top: 15px; padding-bottom: -20px">
+                        <a href="main.jsp"><strong>Go Back</strong></a>
+                    </div>
+                </div>
+            </form>
+            <form action="deleteUserServlet" method="POST"  style="margin-left: 80px; max-height: 250px; margin-top: 250px">             
+                <div>
+                    <div>
+                         <h1><strong> Delete Account</strong></h1>
+                    </div>
+                    <span> <%=(existErr != null ? existErr: "")%> </span>
+                    <div>
+                        <table style="width: auto;">
+                            <tbody>
+                                <tr>
+                                    <td> <label for="email">Email</label> </td>
+                                    <td> <input type="email" placeholder="<%=(emailErr != null ? emailErr : "Enter Email")%>" name="email" required> </td>
+                                </tr>
+                                <tr>
+                                    <td> <label for="psw">Password</label> </td>
+                                    <td> <input type="password" placeholder="<%=(passErr != null ? passErr : "Enter Your Password")%>" name="pass" required> </td>
+                                </tr>
+                                <span> <%=(matchErr != null ? matchErr: "")%> </span>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <button type="submit">Delete Account</button>
                     </div>
                     <div style="margin-top: 15px; padding-bottom: -20px">
                         <a href="main.jsp"><strong>Go Back</strong></a>

@@ -14,20 +14,18 @@
     </head>
     <body>    
         <% 
-            String firstName = request.getParameter("fname");
-            String lastName = request.getParameter("lname");
+            Staff staff = (Staff)session.getAttribute("staff");
             String email = request.getParameter("email");
-            String phoneNumber = request.getParameter("phonenum");
         %>
-        
-        <div class="container"  style="margin-top: 1cm">
-            <h1> Welcome <%= firstName + " " + lastName %>! </h1>
-            <p>Your email is <%=email%></p>
-            <p>Your phone number is <%=phoneNumber%></p>
-            <br />
-            <p> Please click on this button below to visit your dashboard </p>
-            <form action="staffMain.jsp" method="POST">
-                <button  type="submit"> 
+        <h1 class='title'>IoT Bay Store</h1> 
+        <div>
+            <h1> Welcome <%= staff.getFirstName() + " " + staff.getLastName()%>! </h1>
+            <p>Your email is <%=staff.getEmail()%></p>
+            <p>Your phone number is <%=staff.getPhoneNumber()%></p>
+            <br>
+            <form action="staffMain.jsp" method="POST" style="margin-left: 600px; width: 190px; border-radius: 50%">
+                Your Homepage is ready!
+                <button  type="submit" style="margin-top: 15px"> 
                     Dashboard
                 </button> 
             </form>

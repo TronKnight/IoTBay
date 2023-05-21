@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class User implements Serializable {
     private int userID;
     private String firstName, lastName, email, phoneNumber, password, 
-                   streetName, streetType, suburb, state, country, streetNumber, postcode;
+                   streetName, suburb, state, country, streetNumber, postcode;
 
     public User(
             int userID, 
@@ -19,7 +19,6 @@ public class User implements Serializable {
             String phoneNumber, 
             String streetNumber, 
             String streetName, 
-            String streetType, 
             String suburb, 
             String state, 
             String postcode, 
@@ -32,7 +31,6 @@ public class User implements Serializable {
         this.phoneNumber = phoneNumber;
         this.streetNumber = streetNumber;
         this.streetName = streetName;
-        this.streetType = streetType;
         this.suburb = suburb;
         this.state = state;
         this.postcode = postcode;
@@ -101,14 +99,6 @@ public class User implements Serializable {
 
     public void setStreetName(String streetName) {
         this.streetName = streetName;
-    }
-
-    public String getStreetType() {
-        return streetType;
-    }
-
-    public void setStreetType(String streetType) {
-        this.streetType = streetType;
     }
 
     public String getSuburb() {

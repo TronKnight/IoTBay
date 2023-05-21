@@ -25,7 +25,6 @@ public class EditDetailsServlet extends HttpServlet {
         
         HttpSession session = request.getSession();
         Validator validator = new Validator();
-//        int userID = Integer.parseInt(request.getParameter("userID"));
         String firstName = request.getParameter("fname");
         String lastName = request.getParameter("lname");
         String email = request.getParameter("email");
@@ -33,7 +32,6 @@ public class EditDetailsServlet extends HttpServlet {
         String phoneNumber = request.getParameter("phonenum");
         String streetNumber = request.getParameter("streetnum");
         String streetName = request.getParameter("streetname");
-        String streetType = request.getParameter("streettype");
         String suburb = request.getParameter("suburb");
         String state = request.getParameter("state");
         String postcode = request.getParameter("postcode");
@@ -42,7 +40,7 @@ public class EditDetailsServlet extends HttpServlet {
         UserManagerDAO manager = (UserManagerDAO) session.getAttribute("userManager");
         validator.clear(session);
         
-        if ( !password.equals(confirmed) ) { // Check that Password and Confirmed Password are the same
+        if ( !password.equals(confirmed) ) {
             session.setAttribute("matchErr", "Passwords do not match");
             request.getRequestDispatcher("userRegister.jsp").include(request, response);
         } else if ( !validator.validateEmail(email) ) {
@@ -69,7 +67,7 @@ public class EditDetailsServlet extends HttpServlet {
         } else {   
             try {
                 int userID = manager.getUserID(email, password);
-                manager.updateUser(userID, firstName, lastName, email, password, phoneNumber, streetNumber, streetName, streetType, suburb, state, postcode, country);
+                manager.updateUser(userID, firstName, lastName, email, password, phoneNumber, streetNumber, streetName, suburb, state, postcode, country);
                 System.out.println(userID);
                 System.out.println(firstName);
                 System.out.println(lastName);
@@ -78,8 +76,6 @@ public class EditDetailsServlet extends HttpServlet {
                 System.out.println(phoneNumber);
                 System.out.println(streetNumber);
                 System.out.println(streetName);
-                System.out.println(streetType);
-                System.out.println(streetType);
                 System.out.println("User Updated");
             } catch (SQLException | NullPointerException ex) {
                     System.out.println(ex.getMessage());

@@ -15,21 +15,18 @@
     <body>
         <%
             User user = (User)session.getAttribute("user");
-        %>
-        
-        <% 
             String email = request.getParameter("email");
         %>
-        
-        <div class="container text-center"  style="margin-top: 1cm">
+        <h1 class='title'>IoT Bay Store</h1>         
+        <div>
             <h1> Welcome <%= user.getFirstName() + " " + user.getLastName() %>! </h1>
-            <p>Your email is <%=email%></p>
+            <p>Your email is <%=user.getEmail()%></p>
             <p>Your phone number is <%=user.getPhoneNumber()%></p>
-            <br />
-            <p> Please click on this button below to visit your dashboard </p>
-            <form action="main.jsp" method="POST">
-                <button  type="submit"> 
+            <br>
 
+            <form action="main.jsp" method="POST" style="margin-left: 600px; width: 190px; border-radius: 50%">
+                Your Homepage is ready!
+                <button  type="submit" style="margin-top: 15px"> 
                     Dashboard
                 </button> 
             </form>

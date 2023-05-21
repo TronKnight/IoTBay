@@ -16,7 +16,7 @@
     </head>
     <body>
         <%
-            ArrayList<User> users = (ArrayList<User>)session.getAttribute("user");
+            ArrayList<User> users = (ArrayList<User>)session.getAttribute("users");
         %>
         <nav class="navbar navbar-expand-md navbar-dark bg-primary">
             <div class="container">

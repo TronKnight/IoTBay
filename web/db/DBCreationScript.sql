@@ -12,7 +12,6 @@ CREATE TABLE Users (
     PhoneNumber VARCHAR(10) NOT NULL, 
     StreetNumber VARCHAR(5) NOT NULL, 
     StreetName VARCHAR(50) NOT NULL, 
-    StreetType VARCHAR(12) NOT NULL,
     Suburb VARCHAR(50) NOT NULL, 
     UState VARCHAR(15) NOT NULL, 
     Postcode VARCHAR(4) NOT NULL, 
