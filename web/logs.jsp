@@ -1,10 +1,9 @@
 <%-- 
-    Document   : userLogs
-    Created on : May 11, 2023, 4:06:51 PM
+    Document   : logs
+    Created on : 21 May, 2023, 9:44:44 PM
     Author     : Dev
 --%>
 
-<%@page import="uts.isd.model.User"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uts.isd.model.Logs"%>
@@ -37,7 +36,6 @@
     </head>
     <body>
         <%
-            User user = (User)session.getAttribute("user");
             ArrayList logs = (ArrayList) session.getAttribute("logs");
             ArrayList tlogs = (ArrayList) session.getAttribute("tlogs");
         %>
@@ -79,8 +77,7 @@
                 </table>
         </div>
         <div style="margin-top: 15px; padding-bottom: -20px">
-            <a href="main.jsp"><strong>Go Back</strong></a>
+            <a href="staffMain.jsp"><strong>Go Back</strong></a>
         </div>
     </body>
 </html>
-

@@ -18,7 +18,7 @@ public class StaffLogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.invalidate();
-        request.getRequestDispatcher("index.jsp").include(request,response);
+        request.getRequestDispatcher("logout.jsp").include(request,response);
     }
 
 }

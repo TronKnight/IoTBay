@@ -217,3 +217,13 @@ h1 {
 .title2{
     text-align: end;
 }
+
+.tablestyle {
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.tabledata{
+    padding: 10px;
+    border: 1px solid black;
+}
