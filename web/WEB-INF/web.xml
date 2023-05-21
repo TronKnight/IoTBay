@@ -38,6 +38,7 @@
         <servlet-class>uts.isd.controller.EditDetailsServlet</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< HEAD
         <servlet-name>deleteUserServlet</servlet-name>
         <servlet-class>uts.isd.controller.deleteUserServlet</servlet-class>
     </servlet>
@@ -45,6 +46,13 @@
         <servlet-name>StaffEditServlet</servlet-name>
         <servlet-class>uts.isd.controller.StaffEditServlet</servlet-class>
     </servlet>
+=======
+        <servlet-name>BrowseProductServlet</servlet-name>
+        <servlet-class>uts.isd.controller.BrowseProductServlet</servlet-class>
+    </servlet>
+    
+
+>>>>>>> origin/catalog
     <servlet-mapping>
         <servlet-name> ConnServlet </servlet-name>
         <url-pattern> /ConnServlet </url-pattern>
@@ -82,6 +90,7 @@
         <url-pattern>/EditDetailsServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>deleteUserServlet</servlet-name>
         <url-pattern>/deleteUserServlet</url-pattern>
     </servlet-mapping>
@@ -89,6 +98,11 @@
         <servlet-name>StaffEditServlet</servlet-name>
         <url-pattern>/StaffEditServlet</url-pattern>
     </servlet-mapping>
+=======
+        <url-pattern>/BrowseProductServlet</url-pattern>
+    </servlet-mapping>
+    
+>>>>>>> origin/catalog
     <session-config>
         <session-timeout>
             30

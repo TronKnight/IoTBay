@@ -18,7 +18,7 @@
         <div class="homecontainer">
             <a href="userRegister.jsp" ><button class="indexbutton">Customer Sign-Up</button><a/>
             <a href="staffRegister.jsp" ><button class="indexbutton">Staff Sign-Up</button></a> 
-            <a href="#"><button class="indexbutton">Catalogue Browse</button></a> 
+            <a href="catalogueBrowsing.jsp"><button class="indexbutton">Catalogue Browse</button></a> 
         </div>
         <jsp:include page="/ConnServlet" flush="true"/>
         
