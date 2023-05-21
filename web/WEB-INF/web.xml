@@ -99,6 +99,7 @@
         <url-pattern>/StaffEditServlet</url-pattern>
     </servlet-mapping>
 =======
+        <servlet-name>BrowseProductServlet</servlet-name>
         <url-pattern>/BrowseProductServlet</url-pattern>
     </servlet-mapping>
     
