@@ -37,6 +37,10 @@
         <servlet-name>EditDetailsServlet</servlet-name>
         <servlet-class>uts.isd.controller.EditDetailsServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BrowseProductServlet</servlet-name>
+        <servlet-class>uts.isd.controller.BrowseProductServlet</servlet-class>
+    </servlet>
     
 
     <servlet-mapping>
@@ -74,6 +78,10 @@
     <servlet-mapping>
         <servlet-name>EditDetailsServlet</servlet-name>
         <url-pattern>/EditDetailsServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BrowseProductServlet</servlet-name>
+        <url-pattern>/BrowseProductServlet</url-pattern>
     </servlet-mapping>
     
     <session-config>
