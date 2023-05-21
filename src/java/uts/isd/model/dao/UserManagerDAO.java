@@ -56,7 +56,6 @@ public class UserManagerDAO {
         return null;
     }
 
-    // Add a new user into the Users table
     public void addUser(String firstName, String lastName, String email, String password,
                         String phoneNumber, String streetNumber, String streetName,
                         String suburb, String state, String postcode, String country) throws SQLException {       
@@ -118,7 +117,6 @@ public class UserManagerDAO {
         return temp;
     }
 
-    // Get a User by their ID from the database
     public User getUserById(int Id) throws SQLException {
         String fetch = "SELECT * FROM IOTBAY.Users WHERE USERID=" + Id;
         ResultSet rs = st.executeQuery(fetch);
@@ -143,16 +141,15 @@ public class UserManagerDAO {
         return null;
     }
 
-    public int getUserID(String email, String password) throws SQLException {
-        String fetch = "SELECT * FROM IOTBAY.Users WHERE Email = '" + email + "' AND Pass = '" + password + "'";
+    public int getUserID(String email) throws SQLException {
+        String fetch = "SELECT * FROM IOTBAY.Users WHERE Email = '" + email + "'";
         ResultSet rs = st.executeQuery(fetch);
 
         while (rs.next()) {
             int userID = rs.getInt(1);
             String emails = rs.getString(4);
-            String passwords = rs.getString(5);
 
-            if ((password.equals(passwords)) && email.equals(emails)) {
+            if (email.equals(emails)) {
                 return userID;
             }
         }
@@ -171,8 +168,6 @@ public class UserManagerDAO {
         return false;
     }
 
-    /* Following Section is for Log Tracking */    
-    // Adds Registered Log
     public void addRegisterLog(int userID) throws SQLException {
         String registered = "Registered";
         String fetch = "INSERT INTO IOTBAY.UserLogs (USERID, STATUS ,CurrentTime) VALUES (" + userID + ",'" + registered + "',CURRENT_TIMESTAMP)";
@@ -185,14 +180,12 @@ public class UserManagerDAO {
         st.execute(fetch);
     }
 
-    //adds a loging log to the account log table when signing in
     public void addLoginLog(int userID) throws SQLException {
         String loggedIn = "Logged In";
         String fetch = "INSERT INTO IOTBAY.UserLogs (USERID, STATUS ,CurrentTime) VALUES (" + userID + ",'" + loggedIn + "',CURRENT_TIMESTAMP)";
         st.execute(fetch);
     }
 
-    // Returns Status Logs Depending on User ID
     public ArrayList getStatusLogs(int userID) throws SQLException {
         ArrayList statuslist = new ArrayList();
         String fetch = "SELECT * FROM IOTBAY.UserLogs WHERE UserID =" + userID;
@@ -203,7 +196,7 @@ public class UserManagerDAO {
         }
         return statuslist;
     }
-    // Returns Time Logs Depending on User ID
+
     public ArrayList getTimeLogs(int userID) throws SQLException {
         ArrayList timelist = new ArrayList();
         String fetch = "SELECT * FROM IOTBAY.UserLogs WHERE UserID =" + userID;

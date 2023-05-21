@@ -13,12 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import uts.isd.model.dao.StaffDAO;
 import uts.isd.model.dao.UserManagerDAO;
 
 /**
  * @author Dev
  */
-public class EditDetailsServlet extends HttpServlet {
+public class StaffEditServlet extends HttpServlet {
     
     @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -30,59 +31,46 @@ public class EditDetailsServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("pass");
         String phoneNumber = request.getParameter("phonenum");
-        String streetNumber = request.getParameter("streetnum");
-        String streetName = request.getParameter("streetname");
-        String suburb = request.getParameter("suburb");
-        String state = request.getParameter("state");
-        String postcode = request.getParameter("postcode");
         String country = request.getParameter("country");
         String confirmed = request.getParameter("cpass");
-        UserManagerDAO manager = (UserManagerDAO) session.getAttribute("userManager");
+        StaffDAO manager = (StaffDAO) session.getAttribute("staffManager");
         validator.clear(session);
         
         if ( !password.equals(confirmed) ) {
             session.setAttribute("matchErr", "Passwords do not match");
-            request.getRequestDispatcher("userEdit.jsp").include(request, response);
+            request.getRequestDispatcher("staffEdit.jsp").include(request, response);
         } else if ( !validator.validateEmail(email) ) {
             session.setAttribute("emailErr", "Error: Incorrect Email Format");
-            request.getRequestDispatcher("userEdit.jsp").include(request, response);
+            request.getRequestDispatcher("staffEdit.jsp").include(request, response);
         } else if ( !validator.validateFirstName(firstName) )  {
             session.setAttribute("fnameErr", "Error: Incorrect Name Format");
-            request.getRequestDispatcher("userEdit.jsp").include(request, response);
+            request.getRequestDispatcher("staffEdit.jsp").include(request, response);
         } else if ( !validator.validateLastName(lastName) )  {
             session.setAttribute("lnameErr", "Error: Incorrect Name Format");
-            request.getRequestDispatcher("userEdit.jsp").include(request, response);
+            request.getRequestDispatcher("staffEdit.jsp").include(request, response);
         } else if ( !validator.validatePassword(password) )  {
             session.setAttribute("passErr", "Error: Incorrect Password Format");
-            request.getRequestDispatcher("userEdit.jsp").include(request, response);
+            request.getRequestDispatcher("staffEdit.jsp").include(request, response);
         } else if ( !validator.validatePhone(phoneNumber) )  {
             session.setAttribute("phoneErr", "Error: Incorrect Phone Format");
-            request.getRequestDispatcher("userEdit.jsp").include(request, response);
-        } else if ( !validator.validateStreetNum(streetNumber) )  {
-            session.setAttribute("streetNumErr", "Error: Incorrect Street Number Format");
-            request.getRequestDispatcher("userEdit.jsp").include(request, response);
-        } else if ( !validator.validatePostcode(postcode) )  {
-            session.setAttribute("postcodeErr", "Error: Incorrect Postcode Format");
-            request.getRequestDispatcher("userEdit.jsp").include(request, response);
+            request.getRequestDispatcher("staffEdit.jsp").include(request, response);
         } else {   
             try {
-                int userID = manager.getUserID(email);
-                manager.updateUser(userID, firstName, lastName, email, password, phoneNumber, streetNumber, streetName, suburb, state, postcode, country);
+                int userID = manager.getStaffID(email);
+                manager.updateStaff(userID, firstName, lastName, email, password, phoneNumber, country);
                 System.out.println(userID);
                 System.out.println(firstName);
                 System.out.println(lastName);
                 System.out.println(email);
                 System.out.println(password);
                 System.out.println(phoneNumber);
-                System.out.println(streetNumber);
-                System.out.println(streetName);
-                System.out.println("User Updated");
+                System.out.println("Staff Updated");
             } catch (SQLException | NullPointerException ex) {
                     System.out.println(ex.getMessage());
                     Logger.getLogger(EditDetailsServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        request.getRequestDispatcher("main.jsp").include(request, response);
+        request.getRequestDispatcher("staffMain.jsp").include(request, response);
         
     }
     

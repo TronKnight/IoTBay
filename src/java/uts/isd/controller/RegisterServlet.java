@@ -69,7 +69,7 @@ public class RegisterServlet extends HttpServlet {
                 } else {
                     // the error is in the addUser function in UserManagerDAO, it's not being inserted into the db when called
                     manager.addUser(firstName, lastName, email, password, phoneNumber, streetNumber, streetName, suburb, state, postcode, country );
-                    int userID = manager.getUserID(email, password);
+                    int userID = manager.getUserID(email);
                     manager.addRegisterLog(userID);
                     User user = new User(userID, firstName, lastName, email, password, phoneNumber, streetNumber, streetName, suburb, state, postcode, country);
                     session.setAttribute("user", user);

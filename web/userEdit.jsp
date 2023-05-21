@@ -88,7 +88,7 @@
                         </table>
                     </div>
                     <div>
-                        <button type="submit">Create Account</button>
+                        <button type="submit">Edit Account</button>
                     </div>
                     <div style="margin-top: 15px; padding-bottom: -20px">
                         <a href="main.jsp"><strong>Go Back</strong></a>

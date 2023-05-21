@@ -58,7 +58,7 @@ public class StaffRegisterServlet extends HttpServlet {
                 } else {
                     // the error is in the addUser function in UserManagerDAO, it's not being inserted into the db when called
                     manager.addStaff(firstName, lastName, email, password, phoneNumber, country );
-                    int staffID = manager.getStaffID(email, password);
+                    int staffID = manager.getStaffID(email);
                     Staff staff = new Staff(staffID, firstName, lastName, email, password, phoneNumber, country);
                     session.setAttribute("staff", staff);
                     request.getRequestDispatcher("staffWelcome.jsp").include(request, response);

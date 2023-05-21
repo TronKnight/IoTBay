@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
             try {
                 // Find the matching user
                 user = manager.findUser(email, password);
-                int userID = manager.getUserID(email, password);
+                int userID = manager.getUserID(email);
                 if ( user != null ) {
                     manager.addLoginLog(userID);
                     session.setAttribute("user", user);

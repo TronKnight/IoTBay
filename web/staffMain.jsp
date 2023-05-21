@@ -27,7 +27,7 @@
                         <a href="AccLogsServlet" class="white white-button nav-link">View Logs</a>
                     </div>
                     <div class="navigationpagebutton pageButton flex-inline">
-                        <a href="#" class="white white-button nav-link">Link 3</a>
+                        <a href="staffEdit.jsp" class="white white-button nav-link">Edit Account</a>
                     </div>
                     <div class="navigationpagebutton pageButton flex-inline">
                         <a href="StaffLogoutServlet" class="white white-button nav-link">Logout</a>

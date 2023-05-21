@@ -27,7 +27,7 @@ public class LogoutServlet extends HttpServlet {
         String password = user.getPassword();
         int userID;
         try {
-            userID = manager.getUserID(email, password);
+            userID = manager.getUserID(email);
             manager.addLogoutLog(userID);
         } catch (SQLException ex) {
             Logger.getLogger(LogoutServlet.class.getName()).log(Level.SEVERE, null, ex);

@@ -30,14 +30,15 @@ public class AccLogsServlet extends HttpServlet {
         String password = user.getPassword();
         try {
             // Get an Array of the Account Logs
-            int userID = manager.getUserID(email, password);
+            int userID = manager.getUserID(email);
             statusLogs = manager.getStatusLogs(userID);
             timeLogs = manager.getTimeLogs(userID);
             session.setAttribute("statusLogs", statusLogs);
             session.setAttribute("timeLogs", timeLogs);
-            request.getRequestDispatcher("userLogs.jsp").include(request, response);
+
         } catch (SQLException | NullPointerException ex) {
             System.out.println(ex.getMessage());
         }
+            request.getRequestDispatcher("userLogs.jsp").include(request, response);
     }
 }
