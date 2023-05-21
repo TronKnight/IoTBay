@@ -23,18 +23,15 @@ public class AccLogsServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         UserManagerDAO manager = (UserManagerDAO) session.getAttribute("userManager");
-        ArrayList<User> statusLogs = new ArrayList<>();
-        ArrayList<User> timeLogs = new ArrayList<>();
+        ArrayList<User> logs = new ArrayList<>();
         User user = (User) session.getAttribute("user");
         String email = user.getEmail();
         String password = user.getPassword();
         try {
             // Get an Array of the Account Logs
             int userID = manager.getUserID(email);
-            statusLogs = manager.getStatusLogs(userID);
-            timeLogs = manager.getTimeLogs(userID);
-            session.setAttribute("statusLogs", statusLogs);
-            session.setAttribute("timeLogs", timeLogs);
+            logs = manager.getStatusLogs(userID);
+            session.setAttribute("logs", logs);
 
         } catch (SQLException | NullPointerException ex) {
             System.out.println(ex.getMessage());

@@ -24,7 +24,7 @@
                         <a href="#" class="white white-button nav-link">Link1</a>
                     </div>
                     <div class="navigationpagebutton pageButton flex-inline">
-                        <a href="AccLogsServlet" class="white white-button nav-link">View Logs</a>
+                        <a href="logs.jsp" class="white white-button nav-link">View Logs</a>
                     </div>
                     <div class="navigationpagebutton pageButton flex-inline">
                         <a href="staffEdit.jsp" class="white white-button nav-link">Edit Account</a>
