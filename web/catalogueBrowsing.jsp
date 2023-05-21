@@ -56,12 +56,13 @@ ResultSet resultSet = null;
         </nav>
         <div class="container">
             <h2 class="heading1">Products</h2>
+            <table class="tablestyle">
             <thead>
                         <tr>
-                            <th>Product ID</th>
-                            <th>Product Name</th>
-                            <th>Product Quantity</th>
-                            <th>Product Price</th>
+                            <th class="tabledata">Product ID</th>
+                            <th class="tabledata">Product Name</th>
+                            <th class="tabledata">Product Quantity</th>
+                            <th class="tabledata">Product Price</th>
                         </tr>
             </thead>
             <%
@@ -74,10 +75,10 @@ ResultSet resultSet = null;
                         while (resultSet.next()) {
                     %>
                     <tr>
-                        <td><%=resultSet.getString("productID")%></td>
-                        <td><%=resultSet.getString("productName")%></td>
-                        <td><%=resultSet.getString("productQuantity")%></td>
-                        <td><%=resultSet.getString("productPrice")%></td>
+                        <td class="tabledata"><%=resultSet.getString("productID")%></td>
+                        <td class="tabledata"><%=resultSet.getString("productName")%></td>
+                        <td class="tabledata"><%=resultSet.getString("productQuantity")%></td>
+                        <td class="tabledata"><%=resultSet.getString("productPrice")%></td>
 
                     </tr>
                     <%
@@ -86,6 +87,7 @@ ResultSet resultSet = null;
                         e.printStackTrace();
                         }
                     %>
+            </table>        
             <div class="product-grid">
                 <% if (products != null) {
                     for (Product product : products) { %>
