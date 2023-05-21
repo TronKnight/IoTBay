@@ -8,6 +8,27 @@
 <%@page import="uts.isd.model.Product" %>
 <%@page import="java.util.ArrayList" %>
 <%@page import="java.text.DecimalFormat"%>
+
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+
+<%
+String driverName = "com.mysql.jdbc.Driver";
+String connectionUrl = "jdbc:derby://localhost:1527/";
+String dbName = "usersdb";
+String userId = "iotbay";
+String password = "admin";
+try {
+Class.forName(driverName);
+} catch (ClassNotFoundException e) {
+e.printStackTrace();
+}
+Connection connection = null;
+Statement statement = null;
+ResultSet resultSet = null;
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +56,36 @@
         </nav>
         <div class="container">
             <h2 class="heading1">Products</h2>
+            <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Product Quantity</th>
+                            <th>Product Price</th>
+                        </tr>
+            </thead>
+            <%
+                        try {
+                        connection = DriverManager.getConnection(
+                        connectionUrl + dbName, userId, password);
+                        statement = connection.createStatement();
+                        String sql = "SELECT * FROM PRODUCTS";
+                        resultSet = statement.executeQuery(sql);
+                        while (resultSet.next()) {
+                    %>
+                    <tr>
+                        <td><%=resultSet.getString("productID")%></td>
+                        <td><%=resultSet.getString("productName")%></td>
+                        <td><%=resultSet.getString("productQuantity")%></td>
+                        <td><%=resultSet.getString("productPrice")%></td>
+
+                    </tr>
+                    <%
+                        }
+                        } catch (Exception e) {
+                        e.printStackTrace();
+                        }
+                    %>
             <div class="product-grid">
                 <% if (products != null) {
                     for (Product product : products) { %>
